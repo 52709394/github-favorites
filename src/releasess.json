@@ -1,0 +1,69 @@
+{
+    "repositorys": [
+        {
+            "name": "sing-box",
+            "owner": "SagerNet",
+            "repo": "sing-box",
+            "id": "singBox",
+            "info": [
+                "<p>\"sing-box\"拥有媲美\"Clash\",多节点路由分流系统</p>",
+                "<p>(需要花大量时间学习\"sing-box\",才能配置好强大功能)</p>",
+                "<p>\"sing-box\" 官方 app, 支持: \"iOS\", \"MacOS\", \"安卓\"</p>",
+                "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本 ,其他选择 \"universal\" 版本</p>"
+            ]
+        },
+        {
+            "name": "v2rayNG",
+            "owner": "2dust",
+            "repo": "v2rayNG",
+            "id": "v2rayNG",
+            "info": [
+                "<p>\"v2rayNG\"是安卓系统主流代理工具</p>",
+                "<p>简单易用,容易上手</p>",
+                "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本 ,其他选择 \"universal\" 版本</p>"
+            ]
+        },
+        {
+            "name": "v2rayN",
+            "owner": "2dust",
+            "repo": "v2rayN",
+            "id": "v2rayN",
+            "info": [
+                "<p>\"v2rayN\"是桌面版系统主流代的理工具</p>",
+                "<p>简单易用,容易上手</p>",
+                "<p>支持: \"Windows\",\"Linux\",\"MacOS\"</p>"
+            ]
+        }
+    ],
+    "files": [
+        {
+            "name": "sing-box \"1.11.15\" 安卓官方通用版",
+            "id": "sb11115a",
+            "info": [
+                "<p>1.11.15旧版下载</p>"
+            ],
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.15/SFA-1.11.15-universal.apk"
+        },
+        {
+            "name": "sing-box \"1.11.15\" MacOS官方通用版",
+            "id": "sb11115m",
+            "info": [
+                "<p>1.11.15旧版下载</p>"
+            ],
+            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.15/SFM-1.11.15-universal.dmg"
+        },
+        {
+            "name": "Microsoft-Activation-Scripts",
+            "id": "winhj",
+            "info": [
+                "<p>微软激活工具</p>"
+            ],
+            "url": "https://github.com/massgravel/Microsoft-Activation-Scripts/archive/refs/heads/master.zip"
+        },
+        {
+            "name": "TikTok安卓版",
+            "id": "tk",
+            "url": "https://github.com/uyez/TikTok/releases/download/tiktok-apk/TikTok_01.apk"
+        }
+    ]
+}
