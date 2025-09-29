@@ -1,0 +1,12 @@
+name = "github-favorites"
+main = "src/index.js"
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2024-09-23"
+
+[[kv_namespaces]]
+binding = "RELEASE_CACHE"
+id = "dae4b3b60af9452a80a51c4ad24c6283" 
+
+[triggers]
+crons = ["0 19 * * 6"]
+
