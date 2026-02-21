@@ -10,8 +10,15 @@ let MyReleasessPath = "/app"
 export default {
 	async fetch(request, env, ctx) {
 
-		const url = new URL(request.url);
+		const ua = request.headers.get("user-agent") || "";
 
+		const isWeChat = ua.toLowerCase().includes("micromessenger");
+
+		if (isWeChat) {
+			return WeChatWeb()
+		}
+
+		const url = new URL(request.url);
 
 		if (env.ReleasessPath) {
 			if (env.ReleasessPath.search(/^\/[a-zA-Z0-9\/]+$/i) === 0) {
@@ -337,3 +344,40 @@ async function updateReleaseCache(env, name, owner, repo) {
 	const data = await response.json();
 	await env.RELEASE_CACHE.put(name, JSON.stringify(data));
 }
+
+ function WeChatWeb() {
+
+	const text = `
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>请用浏览器打开</title>
+		<style>
+		body {
+		margin:0;
+		background:#000;
+		color:#fff;
+		text-align:center;
+		font-family:sans-serif;
+		}
+		.tip {
+		padding-top:80px;
+		font-size:18px;
+		}
+		</style>
+		</head>
+		<body>
+		<div class="tip">
+			<p>请点击右上角 ···</p>
+			<p>选择「在浏览器中打开」</p>
+		</div>
+		</body>
+		</html>
+`
+	return new Response(text, {
+		headers: { "content-type": "text/html;charset=UTF-8" }
+	});
+}
+
