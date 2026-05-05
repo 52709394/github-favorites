@@ -24,6 +24,18 @@
             ]
         },
         {
+            "name": "clash mi",
+            "owner": "KaringX",
+            "repo": "clashmi",
+            "id": "clashMi",
+            "info": [
+                "<p>\"Clash mi\",所有主流协议基本都支持</p>",
+                "<p>(需要花大量时间学习\"mihomo\",才能配置好强大功能)</p>",
+                "<p>\"Clash mi\"  app, 支持: 全平台\"</p>",
+                "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本</p>"
+            ]
+        },		
+        {
             "name": "v2rayN",
             "owner": "2dust",
             "repo": "v2rayN",
