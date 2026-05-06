@@ -129,7 +129,6 @@ export async function StylesUrl() {
             .modal-image {
                 max-width: 100%;
                 max-height: 70vh;
-                display: block;
                 box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
             }
 

@@ -147,10 +147,14 @@ async function handleRequest(url, env, mod) {
 
 		for (const repository of releasess.repositorys) {
 
-			const cached = await env.RELEASE_CACHE.get(repository.name);
+			let cached = await env.RELEASE_CACHE.get(repository.name);
 
 			if (!cached) {
-				return new Response("No data cached yet. Please wait for schedule to run.", { status: 503 });
+				await updateReleaseCache(env, repository.name, repository.owner, repository.repo)
+				cached = await env.RELEASE_CACHE.get(repository.name);
+				if (!cached) {
+					return new Response("No data cached yet. Please wait for schedule to run.", { status: 503 });
+				}
 			}
 
 			const release = JSON.parse(cached);
@@ -345,7 +349,7 @@ async function updateReleaseCache(env, name, owner, repo) {
 	await env.RELEASE_CACHE.put(name, JSON.stringify(data));
 }
 
- function WeChatWeb() {
+function WeChatWeb() {
 
 	const text = `
 		<!DOCTYPE html>

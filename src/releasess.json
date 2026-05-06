@@ -8,7 +8,7 @@
             "info": [
                 "<p>\"sing-box\"拥有媲美\"Clash\",多节点路由分流系统</p>",
                 "<p>(需要花大量时间学习\"sing-box\",才能配置好强大功能)</p>",
-                "<p>\"sing-box\" 官方 app, 支持: \"iOS\", \"MacOS\", \"安卓\"</p>",
+                "<p>\"sing-box\" 官方 app, 支持: iOS, MacOS, 安卓</p>",
                 "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本 ,其他选择 \"universal\" 版本</p>"
             ]
         },
@@ -31,7 +31,7 @@
             "info": [
                 "<p>\"Clash mi\",所有主流协议基本都支持</p>",
                 "<p>(需要花大量时间学习\"mihomo\",才能配置好强大功能)</p>",
-                "<p>\"Clash mi\"  app, 支持: 全平台\"</p>",
+                "<p>\"Clash mi\" app, 支持: 全平台</p>",
                 "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本</p>"
             ]
         },		
@@ -43,13 +43,13 @@
             "info": [
                 "<p>\"v2rayN\"是桌面版系统主流代的理工具</p>",
                 "<p>简单易用,容易上手</p>",
-                "<p>支持: \"Windows\",\"Linux\",\"MacOS\"</p>"
+                "<p>支持: Windows, Linux, MacOS</p>"
             ]
         }
     ],
     "files": [
         {
-            "name": "sing-box \"1.11.15\" 安卓官方通用版",
+            "name": "sing-box 1.11.15 安卓官方通用版",
             "id": "sb11115a",
             "info": [
                 "<p>1.11.15旧版下载</p>"
@@ -57,7 +57,7 @@
             "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.15/SFA-1.11.15-universal.apk"
         },
         {
-            "name": "sing-box \"1.11.15\" MacOS官方通用版",
+            "name": "sing-box 1.11.15 MacOS官方通用版",
             "id": "sb11115m",
             "info": [
                 "<p>1.11.15旧版下载</p>"
