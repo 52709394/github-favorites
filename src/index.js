@@ -18,6 +18,25 @@ export default {
 			return WeChatWeb()
 		}
 
+		if (!env.RELEASE_CACHE) {
+			return new Response(
+				`
+			  KV (变量名称:RELEASE_CACHE) 未配置！
+	  
+			  请配置：
+			  1. 创建 KV 命名为RELEASE_CACHE
+			  2. 然后绑定到项目
+			  3. 重新部署
+			  `,
+				{
+					status: 500,
+					headers: {
+						"Content-Type": "text/plain;charset=UTF-8"
+					}
+				}
+			);
+		}
+
 		const url = new URL(request.url);
 
 		if (env.ReleasessPath) {

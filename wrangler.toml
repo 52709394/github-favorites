@@ -3,9 +3,16 @@ main = "src/index.js"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-09-23"
 
-[[kv_namespaces]]
+
+[env.dev]
+
+[[env.dev.kv_namespaces]]
 binding = "RELEASE_CACHE"
-id = "92a91d613eef43168bcd903dfc95b030" 
+id = "52709394"
+
+#[[kv_namespaces]]
+#binding = "RELEASE_CACHE"
+#id = "92a91d613eef43168bcd903dfc95b030" 
 
 [triggers]
 crons = ["0 19 * * 6"]
