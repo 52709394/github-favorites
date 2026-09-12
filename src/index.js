@@ -6,6 +6,8 @@ import { MyQRCodePath, SetQRCodePath, generateQRCode } from './qr_code.js';
 
 let MyReleasessPath = "/app"
 
+let MyUpdatePath = "/update"
+
 // 处理网页访问和定时触发
 export default {
 	async fetch(request, env, ctx) {
@@ -45,8 +47,42 @@ export default {
 			}
 		}
 
+		if (env.UpdatePath) {
+			if (env.UpdatePath.search(/^\/[a-zA-Z0-9\/]+$/i) === 0) {
+				MyUpdatePath = env.ReleasessPath;
+			}
+		}
+
 		SetPREFIX(env.PREFIX)
 		SetQRCodePath(env.QRCodePath)
+
+		if (url.pathname === MyUpdatePath) {
+
+			for (const repository of releasess.repositorys) {
+				await updateReleaseCache(env, repository.name, repository.owner, repository.repo)
+			}
+
+			return new Response(`
+			<!DOCTYPE html>
+			<html>
+			<head>
+			<meta charset="UTF-8">
+			<title>配置更新成功</title>
+			</head>
+			<body>
+			<script>
+			alert("配置更新成功!");
+			location.href = "${MyReleasessPath}";
+			</script>
+			</body>
+			</html>
+			`, {
+				headers: {
+					"content-type": "text/html; charset=UTF-8",
+				}
+			});
+
+		}
 
 		if (url.pathname === MyReleasessPath) {
 			url.pathname = MyReleasessPath + '/releases.html'
