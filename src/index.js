@@ -49,7 +49,7 @@ export default {
 
 		if (env.UpdatePath) {
 			if (env.UpdatePath.search(/^\/[a-zA-Z0-9\/]+$/i) === 0) {
-				MyUpdatePath = env.ReleasessPath;
+				MyUpdatePath = env.UpdatePath;
 			}
 		}
 
