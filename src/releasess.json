@@ -76,6 +76,14 @@
             "name": "TikTok安卓版",
             "id": "tk",
             "url": "https://github.com/uyez/TikTok/releases/download/tiktok-apk/TikTok_01.apk"
+        },
+		{
+            "name": "cmcc_rax3000m_recovery",
+            "id": "rax3000m",
+            "info": [
+                "<p>rax3000m恢复工具</p>"
+            ],
+            "url": "https://github.com/tou-7/cmcc_rax3000m_recovery/archive/refs/heads/main.zip"
         }
     ]
 }
