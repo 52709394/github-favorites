@@ -237,7 +237,7 @@ async function handleRequest(url, env, mod) {
 				};
 			}
 
-			const reg = new RegExp(repository.include, 'g');
+			const reg = new RegExp(repository.include);
 
 			for (const asset of assets) {
 
