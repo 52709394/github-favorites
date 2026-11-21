@@ -1,6 +1,6 @@
 import releasess from './releasess.json';
 import { StylesUrl } from './styles.js';
-import { MYPREFIX, SetPREFIX, GetGithubHandler, makeRes } from './github_proxy.js';
+import { MySpeedPath, SetSpeedPath, GetGithubHandler, makeRes } from './github_proxy.js';
 import { MyQRCodePath, SetQRCodePath, generateQRCode } from './qr_code.js';
 
 
@@ -53,13 +53,13 @@ export default {
 			}
 		}
 
-		SetPREFIX(env.PREFIX)
+		SetSpeedPath(env.SpeedPath)
 		SetQRCodePath(env.QRCodePath)
 
 		if (url.pathname === MyUpdatePath) {
 
 			for (const repository of releasess.repositorys) {
-				await updateReleaseCache(env, repository.name, repository.owner, repository.repo)
+				await updateReleaseCache(env, repository.name, repository.owner, repository.repo, repository.tag)
 			}
 
 			return new Response(`
@@ -108,7 +108,7 @@ export default {
 	async scheduled(event, env, ctx) {
 
 		for (const repository of releasess.repositorys) {
-			await updateReleaseCache(env, repository.name, repository.owner, repository.repo)
+			await updateReleaseCache(env, repository.name, repository.owner, repository.repo, repository.tag)
 		}
 	}
 
@@ -125,7 +125,7 @@ async function handleRequest(url, env, mod) {
 		// getReleaseData(env);
 
 		for (const repository of releasess.repositorys) {
-			await updateReleaseCache(env, repository.name, repository.owner, repository.repo)
+			await updateReleaseCache(env, repository.name, repository.owner, repository.repo, repository.tag)
 		}
 
 		// 设置标志，防止重复初始化
@@ -133,7 +133,7 @@ async function handleRequest(url, env, mod) {
 	}
 
 	const qrCodePath = url.origin + MyQRCodePath
-	const gitProxyPath = url.origin + MYPREFIX
+	const gitProxyPath = url.origin + MySpeedPath
 
 	let repJump = ""
 	let fileJump = ""
@@ -205,7 +205,7 @@ async function handleRequest(url, env, mod) {
 			let cached = await env.RELEASE_CACHE.get(repository.name);
 
 			if (!cached) {
-				await updateReleaseCache(env, repository.name, repository.owner, repository.repo)
+				await updateReleaseCache(env, repository.name, repository.owner, repository.repo, repository.tag)
 				cached = await env.RELEASE_CACHE.get(repository.name);
 				if (!cached) {
 					return new Response("No data cached yet. Please wait for schedule to run.", { status: 503 });
@@ -229,11 +229,25 @@ async function handleRequest(url, env, mod) {
 
 			if (Array.isArray(repository.info) && repository.info.length > 0) {
 				for (const info of repository.info) {
-					html += info
+					if (info.includes("$MySpeedPath$")) {
+						html += info.replace("$MySpeedPath$", gitProxyPath)
+					} else {
+						html += info
+					}
 				};
 			}
 
+			const reg = new RegExp(repository.include, 'g');
+
 			for (const asset of assets) {
+
+				if (repository.include != null && repository.include != "") {
+					if (!asset.name.toLowerCase().includes(repository.include.toLowerCase()) &&
+						!reg.test(asset.name)) {
+						continue
+					}
+				}
+
 				html += `<li><a href="${gitProxyPath}${asset.browser_download_url}" target="_blank">${asset.name}</a>    `;
 				if (asset.name.toLowerCase().endsWith(".apk")) {
 					//html += `<a href="${qrCodePath}${gitProxyPath}${asset.browser_download_url}">二维码</a>`;
@@ -287,7 +301,11 @@ async function handleRequest(url, env, mod) {
 
 				if (Array.isArray(file.info) && file.info.length > 0) {
 					for (const info of file.info) {
-						html += info
+						if (info.includes("$MySpeedPath$")) {
+							html += info.replace("$MySpeedPath$", gitProxyPath)
+						} else {
+							html += info
+						}
 					};
 				}
 
@@ -383,10 +401,15 @@ async function handleRequest(url, env, mod) {
 }
 
 // 定时更新缓存逻辑
-async function updateReleaseCache(env, name, owner, repo) {
+async function updateReleaseCache(env, name, owner, repo, tag) {
 
-	const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+	let apiUrl = "";
 
+	if (tag == null || tag == "") {
+		apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/latest`;
+	} else {
+		apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases/tags/${tag}`;
+	}
 	const response = await fetch(apiUrl, {
 		headers: {
 			'User-Agent': 'Cloudflare-Worker',

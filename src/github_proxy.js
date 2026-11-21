@@ -1,7 +1,7 @@
 'use strict'
 
 const ASSET_URL = 'https://hunshcn.github.io/gh-proxy/'
-export let MYPREFIX = '/fxxkusb/'
+export let MySpeedPath = '/GitHub/'
 
 const Config = {
     jsdelivr: 0
@@ -25,10 +25,10 @@ const exp5 = /^(?:https?:\/\/)?gist\.(?:githubusercontent|github)\.com\/.+?\/.+?
 const exp6 = /^(?:https?:\/\/)?github\.com\/.+?\/.+?\/tags.*$/i
 
 
-export function SetPREFIX(envStr) {
+export function SetSpeedPath(envStr) {
     if (envStr) {
         if (envStr.search(/^\/[a-zA-Z0-9]+\/$/i) === 0) {
-            MYPREFIX = envStr
+            MySpeedPath = envStr
         }
     }
 
@@ -61,11 +61,11 @@ export async function GetGithubHandler(req) {
     const urlObj = new URL(urlStr)
     let path = urlObj.searchParams.get('q')
     if (path) {
-        return Response.redirect('https://' + urlObj.host + MYPREFIX + path, 301)
+        return Response.redirect('https://' + urlObj.host + MySpeedPath + path, 301)
     }
-    //path = urlObj.href.substr(urlObj.origin.length + MYPREFIX.length).replace(/^https?:\/+/, 'https://')
+    //path = urlObj.href.substr(urlObj.origin.length + MySpeedPath.length).replace(/^https?:\/+/, 'https://')
 
-    path = urlObj.pathname.slice(MYPREFIX.length).replace(/^https?:\/+/, 'https://')
+    path = urlObj.pathname.slice(MySpeedPath.length).replace(/^https?:\/+/, 'https://')
 
     if (path.search(exp1) === 0 || path.search(exp5) === 0 || path.search(exp6) === 0 || path.search(exp3) === 0 || path.search(exp4) === 0) {
         return httpHandler(req, path)
@@ -129,7 +129,7 @@ async function proxy(urlObj, reqInit) {
     if (resHdrNew.has('location')) {
         let _location = resHdrNew.get('location')
         if (checkUrl(_location))
-            resHdrNew.set('location', MYPREFIX + _location)
+            resHdrNew.set('location', MySpeedPath + _location)
         else {
             reqInit.redirect = 'follow'
             return proxy(newUrl(_location), reqInit)

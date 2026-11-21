@@ -4,11 +4,13 @@
             "name": "sing-box",
             "owner": "SagerNet",
             "repo": "sing-box",
+            "include": "^SF",
             "id": "singBox",
             "info": [
                 "<p>\"sing-box\"拥有媲美\"Clash\",多节点路由分流系统</p>",
                 "<p>(需要花大量时间学习\"sing-box\",才能配置好强大功能)</p>",
-                "<p>\"sing-box\" 官方 app, 支持: iOS, MacOS, 安卓</p>",
+                "<h3>\"sing-box\" 官方 app, 支持: 全平台</h3>",
+                "<p>(SFA:安卓, SFL:liunxOS, SFM:MacOS, SFW:widows)</p>",
                 "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本 ,其他选择 \"universal\" 版本</p>"
             ]
         },
@@ -16,6 +18,7 @@
             "name": "v2rayNG",
             "owner": "2dust",
             "repo": "v2rayNG",
+            "include": "\\.apk$",
             "id": "v2rayNG",
             "info": [
                 "<p>\"v2rayNG\"是安卓系统主流代理工具</p>",
@@ -34,36 +37,76 @@
                 "<p>\"Clash mi\" app, 支持: 全平台</p>",
                 "<p>17年后安卓(arm架构)选择 \"arm64-v8a\" 版本</p>"
             ]
-        },		
+        },
         {
             "name": "v2rayN",
             "owner": "2dust",
             "repo": "v2rayN",
+            "include": "(?:deb|rpm|dmg|zip|7z)$",
             "id": "v2rayN",
             "info": [
                 "<p>\"v2rayN\"是桌面版系统主流代的理工具</p>",
                 "<p>简单易用,容易上手</p>",
                 "<p>支持: Windows, Linux, MacOS</p>"
             ]
+        },
+        {
+            "name": "openclash",
+            "owner": "vernesong",
+            "repo": "openclash",
+            "tag": null,
+            "include": null,
+            "id": "openclash",
+            "info": [
+                "<p>建议不用下载,使用命令线上安装!</p>",
+                "<p>提示1: luci 管理,系统->软件包->更新列表,下载 luci-app-ttyd , 不用安装连接 ssh 工具 </p>",
+                "<p>提示2: 刷新 luci 管理,服务-> Terminal 或 终端 登录 root 账号输入命令即可 </p>",
+                "<h3>25.12 和 以上系统, ssh 命令行(一行一行复制):</h3>",
+                "<p>apk update</p>",
+                "<p>apk add curl ca-bundle</p>",
+                "<p>curl -fsSL -o /tmp/install.sh https://cdn.jsdelivr.net/gh/vernesong/OpenClash@dev/install.sh && sh /tmp/install.sh</p>",
+                "<h3> 24.10 和 以下系统, ssh 命令行(一行一行复制):</h3>",
+                "<p>opkg update</p>",
+                "<p>opkg install curl ca-bundle</p>",
+                "<p>curl -fsSL -o /tmp/install.sh https://cdn.jsdelivr.net/gh/vernesong/OpenClash@dev/install.sh && sh /tmp/install.sh</p>"
+            ]
+        },
+        {
+            "name": "iStore_25_12_a53_app",
+            "owner": "bcseputetto",
+            "repo": "Are-u-ok",
+            "tag": "iStoreOS_25.12",
+            "include": "aarch64_a53",
+            "id": "25_12_app",
+            "info": [
+                "<p>iStore商店 25.12.X 的 离线软件包</p>",
+                "<a href=\"https://github.com/bcseputetto/Are-u-ok/releases/tag/iStoreOS_25.12\">访问原GitHub仓库</a>",
+                "<br/>",
+                "<p>.如何安装</p>",
+                "<p>.下载后,来到iStore应用商店页面,点击手动安装,点击选择上传或者直接拖放文件</p>",
+                "<img src=\"$MySpeedPath$https://raw.githubusercontent.com/bcseputetto/Are-u-ok/refs/heads/master/packages/install.png\" alt=\"\">",
+                "<br/><br/>"
+            ]
+        },
+        {
+            "name": "iStore_24_10_a53_app",
+            "owner": "bcseputetto",
+            "repo": "Are-u-ok",
+            "tag": "iStoreOS_24.10",
+            "include": "aarch64_a53",
+            "id": "24_10_app",
+            "info": [
+                "<p>iStore商店 24.10.X 的 离线软件包</p>",
+                "<a href=\"https://github.com/bcseputetto/Are-u-ok/releases/tag/iStoreOS_24.10\">访问原GitHub仓库</a>",
+                "<br/>",
+                "<p>.如何安装</p>",
+                "<p>.下载后,来到iStore应用商店页面,点击手动安装,点击选择上传或者直接拖放文件</p>",
+                "<img src=\"$MySpeedPath$https://raw.githubusercontent.com/bcseputetto/Are-u-ok/refs/heads/master/packages/install.png\" alt=\"\" >",
+                "<br/><br/>"
+            ]
         }
     ],
     "files": [
-        {
-            "name": "sing-box 1.11.15 安卓官方通用版",
-            "id": "sb11115a",
-            "info": [
-                "<p>1.11.15旧版下载</p>"
-            ],
-            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.15/SFA-1.11.15-universal.apk"
-        },
-        {
-            "name": "sing-box 1.11.15 MacOS官方通用版",
-            "id": "sb11115m",
-            "info": [
-                "<p>1.11.15旧版下载</p>"
-            ],
-            "url": "https://github.com/SagerNet/sing-box/releases/download/v1.11.15/SFM-1.11.15-universal.dmg"
-        },
         {
             "name": "Microsoft-Activation-Scripts",
             "id": "winhj",
@@ -77,13 +120,95 @@
             "id": "tk",
             "url": "https://github.com/uyez/TikTok/releases/download/tiktok-apk/TikTok_01.apk"
         },
-		{
-            "name": "cmcc_rax3000m_recovery",
-            "id": "rax3000m",
+        {
+            "name": "rax3000m_25_12_6_firmware",
+            "id": "firmware_25_12_6",
             "info": [
-                "<p>rax3000m恢复工具</p>"
+                "<h3>rax3000m openwrt  25.12.6 自编译固件(2026.11.17) </h3>",
+                "<p>1. 预装argon主题</p>",
+                "<p>2. 预装passwall(没带内核)</p>",
+                "<p>3. 预装openclash(没带内核)</p>",
+                "<h4>注意: 需要 iStore 商店 插件, 建议安装原版系统,不要使用编译版, 缺少 kmods 源,导致好多插件无法安装!</h4>"
             ],
-            "url": "https://github.com/tou-7/cmcc_rax3000m_recovery/archive/refs/heads/main.zip"
+            "url": "https://github.com/tou-7/Actions-dakaiWrt/releases/download/2026.11.17-0829_rax3000m/openwrt-mediatek-filogic-cmcc_rax3000m-squashfs-sysupgrade.itb"
+        },
+        {
+            "name": "rax3000m_24_10_8_firmware",
+            "id": "firmware_24_10_8",
+            "info": [
+                "<h3>rax3000m openwrt  24.10.8 自编译固件(2026.11.15) </h3>",
+                "<p>1. 预装argon主题</p>",
+                "<p>2. 预装passwall(没带内核)</p>",
+                "<p>3. 预装openclash(没带内核)</p>",
+                "<h4>注意: 需要 iStore 商店 插件, 建议安装原版系统,不要使用编译版, 缺少 kmods 源,导致好多插件无法安装!</h4>"
+            ],
+            "url": "https://github.com/tou-7/Actions-dakaiWrt/releases/download/2026.11.15-1742_rax3000m/openwrt-mediatek-filogic-cmcc_rax3000m-squashfs-sysupgrade.itb"
+        },
+        {
+            "name": "rax3000m_25_12_init_script",
+            "id": "init_script_25_12",
+            "info": [
+                "<h3>rax3000m openwrt 原版 25.12.x 装机脚本</h3>",
+                "<p>注意:不用下载的,只供新装重装原版 25.12.x 系统 ,后使用</p>",
+                "<p><a href=\"https://firmware-selector.openwrt.org/?version=25.12.6&target=mediatek%2Ffilogic&id=cmcc_rax3000m\" target=\"_blank\" >原版固件下载</a></p>",
+                "<h3>优化说明:</h3>",
+                "<p>1. 添加 <a href=\"https://opkg.cooluc.com\">pkg.cooluc.com</a> 第三方源</p>",
+                "<p>2. 安装中文安装包</p>",
+                "<p>3. 安装 argon 主题</p>",
+                "<p>4. 安装 iStore 商店</p>",
+                "<p>5. lan口 网关为 192.168.100.1</p>",
+                "<p>6. wifi_5G 改为 ssid:iWiFi_5G, password:aA123456xx</p>",
+                "<p>7. 改为中国时区</p>",
+                "<br/>",
+                "<p>提示1: luci 管理,系统->软件包->更新列表,下载 luci-app-ttyd , 不用安装连接 ssh 工具</p>",
+                "<p>提示2. 刷新 luci 管理,服务-> Terminal 或 终端 登录 root 账号输入命令即可 </p>",
+                "<h3>ssh 命令行(一行一行复制):</h3>",
+                "<p>apk update</p>",
+                "<p>apk add bash curl</p>",
+                "<p>bash <(curl -sSL \"$MySpeedPath$https://raw.githubusercontent.com/52709394/CFHighIP/refs/heads/main/install25.12.sh\")</p>"
+            ],
+            "url": "https://raw.githubusercontent.com/52709394/CFHighIP/refs/heads/main/install25.12.sh"
+        },
+        {
+            "name": "rax3000m_24_10_init_script",
+            "id": "init_script_24_10",
+            "info": [
+                "<h3>rax3000m openwrt 原版 24.10.x 装机脚本</h3>",
+                "<p>注意:不用下载的,只供新装重装原版 24.10.x 系统 ,后使用</p>",
+                "<p><a href=\"https://firmware-selector.openwrt.org/?version=24.10.8&target=mediatek%2Ffilogic&id=cmcc_rax3000m\" target=\"_blank\" >原版固件下载</a></p>",
+                "<h3>优化说明:</h3>",
+                "<p>1. 添加 <a href=\"https://opkg.cooluc.com\">pkg.cooluc.com</a> 第三方源</p>",
+                "<p>2. 安装中文安装包</p>",
+                "<p>3. 安装 argon 主题</p>",
+                "<p>4. 安装 iStore 商店</p>",
+                "<p>5. lan口 网关为 192.168.100.1</p>",
+                "<p>6. wifi_5G 改为 ssid:iWiFi_5G, password:aA123456xx</p>",
+                "<p>7. 改为中国时区</p>",
+                "<br/>",
+                "<p>提示1: luci 管理,系统->软件包->更新列表,下载 luci-app-ttyd , 不用安装连接 ssh 工具</p>",
+                "<p>提示2. 刷新 luci 管理,服务-> Terminal 或 终端 登录 root 账号输入命令即可 </p>",
+                "<h3>ssh 命令行(一行一行复制):</h3>",
+                "<p>opkg update</p>",
+                "<p>opkg install bash curl</p>",
+                "<p>bash <(curl -sSL \"$MySpeedPath$https://raw.githubusercontent.com/52709394/CFHighIP/refs/heads/main/install24.10.sh\")</p>"
+            ],
+            "url": "https://raw.githubusercontent.com/52709394/CFHighIP/refs/heads/main/install24.10.sh"
+        },
+        {
+            "name": "rax3000m_Recovery",
+            "id": "rax3000m_recovery",
+            "info": [
+                "<h3>rax3000m恢复工具</h3>",
+                "<p>0.下载恢复工具</p>",
+                "<p>1.有线网卡连接路由器lan口</p>",
+                "<p>2.断电,按住路由器的 reset 键,再通电,等待5,6秒放手(rax3000m 或 me 指示灯变蓝色)</p>",
+                "<p>3. 右键管理员运行 run.cmd 脚本 (tftpd64运行是,防火墙会提示,请允许放行)手动请参考:https://www.right.com.cn/forum/thread-8487191-1-1.html)</p>",
+                "<p>4.等待edge浏览器自动打开恢复系统</p>",
+                "<p>5.登录系统(没密码)!</p>",
+                "<p>6.在luci 管理, 系统->备份与更新->更新固件(点击刷写固件按钮)</p>",
+                "<p>7.写入对应固件,恢复完成!</p>"
+            ],
+            "url": "https://github.com/52709394/cmcc_rax3000m_recovery/archive/refs/heads/main.zip"
         }
     ]
 }
